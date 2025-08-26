@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Page Embed</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+    }
+    .fb-container {
+        max-width: 500px;
+        margin: auto;
+        padding: 10px;
+    }
+    @media (max-width: 600px) {
+        .fb-container {
+            margin-top: 60px;
+            max-width: 100%;
+            padding: 5px;
+        }
+    }
+    
+    /* ✅ Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #3e80e2;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        z-index: 10000;
+        height: 45px;
+    }
+    .header .logo {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .header nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 15px;
+        font-size: 14px;
+    }
+    .header nav a:hover {
+        color: #6c63ff;
+    }
+    
+    /* ✅ Bottom Navigation (Mobile Only) */
+.bottom-nav {
+    position: fixed;
+    bottom: -100px; /* for slide-in animation */
+    left: 0;
+    width: 100%;
+    background: #111;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    border-top: 1px solid #333;
+    z-index: 9999;
+    animation: slideUp 0.5s ease-out forwards;
+    display: none; /* Hide by default */
+}
+
+@keyframes slideUp {
+    to {
+        bottom: 0;
+    }
+}
+
+.bottom-nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.bottom-nav a i {
+    font-size: 18px;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* Hover or tap animation */
+.bottom-nav a:hover,
+.bottom-nav a:active {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Active state */
+.bottom-nav a.active {
+    color: #6c63ff; /* Active purple color */
+}
+
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: flex; /* Show only on mobile */
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- ✅ Header -->
+<header class="header">
+    <div class="logo">Murliwala News</div>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="../navbar/facebook.html">Facebook</a>
+        <a href="../navbar/trending.php">Trending</a>
+    </nav>
+</header>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v23.0">
+</script>
+
+<div class="fb-container">
+    <div class="fb-page"
+        data-href="https://www.facebook.com/gopalmalecha"
+        data-tabs="timeline"
+        data-width="500"
+        data-height="1000"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/gopalmalecha" 
+            class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/gopalmalecha">Murliwala Gopal Malecha</a>
+        </blockquote>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
+        <i class="fas fa-home"></i><span>Home</span>
+    </a>
+    <a href="../navbar/facebook.html" class="<?php echo basename($_SERVER['PHP_SELF']) == 'categories.php' ? 'active' : ''; ?>">
+<i class="fab fa-facebook-f"></i><span>Facebook</span>
+    </a>
+
+    <a href="https://wa.me/919009955758" target="_blank">
+    <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+    </a>
+   
+    <a href="../navbar/trending.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'trending.php' ? 'active' : ''; ?>">
+        <i class="fas fa-fire"></i><span>Trending</span>
+    </a>
+   
+</div>
+
+</body>
+</html>
